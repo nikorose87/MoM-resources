@@ -1,0 +1,32 @@
+% This file was created with JabRef 2.10.
+% Encoding: UTF-8
+
+
+@Misc{ICONTEC2009,
+  Title                    = {{Compendio De Dibujo Tecnico}},
+
+  Author                   = {ICONTEC},
+  Year                     = {2009},
+
+  File                     = {:home/nikorose/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/ICONTEC - 2009 - Compendio De Dibujo Tecnico.pdf:pdf},
+  ISBN                     = {9589383300},
+  Mendeley-groups          = {Mechanical Engineering/Technical Drawing},
+  Owner                    = {nikorose},
+  Timestamp                = {2020.10.29}
+}
+
+@Article{Metraglia2014,
+  Title                    = {{Development of a Self-assessment Questionnaire for basic Technical Drawing Skills: A Preliminary Study}},
+  Author                   = {Metraglia, Riccardo and Baronio, Gabriele and Villa, Valerio and Adamini, Riccardo},
+  Journal                  = {Procedia - Social and Behavioral Sciences},
+  Year                     = {2014},
+  Pages                    = {848--859},
+  Volume                   = {106},
+
+  Abstract                 = {The aim of this study was to develop and validate a new self-assessment questionnaire (SAQ) for basic technical drawing skills based on the Technical Drawing Evaluation Grid (TDEG) (Metraglia, Baronio & Villa, 2011). One hundred and seventeen first-year engineering students completed the TDEG-SAQ (first version) at the end of a training course of technical drawing. Eight factors relating to different skills were identified. Reliability analysis ranged from 0.74 to 0.92 for the questionnaire factors and was 0.96 for the overall questionnaire. Concurrent validity analysis showed the ability of the questionnaire to distinguish between genders and high school diplomas.},
+  Doi                      = {10.1016/j.sbspro.2013.12.097},
+  File                     = {:home/nikorose/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Metraglia et al. - 2014 - Development of a Self-assessment Questionnaire for basic Technical Drawing Skills A Preliminary Study.pdf:pdf},
+  ISSN                     = {18770428},
+  Mendeley-groups          = {Mechanical Engineering/Technical Drawing}
+}
+
