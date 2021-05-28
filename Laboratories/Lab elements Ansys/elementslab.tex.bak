@@ -10,7 +10,7 @@
 
 \usepackage{natbib}
 \usepackage[utf8]{inputenc}
-\usepackage[spanish]{babel}
+\usepackage[english]{babel}
 \usepackage{xcolor,graphicx}
 \usepackage{fancyhdr}
 \usepackage{multirow}
@@ -37,7 +37,6 @@
 \usepackage{caption}
 \usepackage{subcaption}
 
-\spanishdecimal{.}
 
 \begin{document}
 \fancyhead{}
@@ -112,7 +111,7 @@ There are eight possible element shapes in ANSYS: points (for point elements); l
 
 \begin{figure}[h]
    \centering
-   \includegraphics[width=0.6\textwidth]{elementshapes}
+   \includegraphics[width=0.95\textwidth]{elementshapes}
    \caption{Possible Element Shapes in ANSYS.}
    \label{fig:shapes}
 \end{figure}
@@ -123,18 +122,90 @@ All elements have nodes that define their location in space. For example, quadri
 
 \begin{figure}[h]
    \centering
-   \includegraphics[width=0.6\textwidth]{nodesinelement.png}
-   \caption{Possible Element Shapes in ANSYS.}
+   \includegraphics[width=0.6\textwidth]{nodesinelement}
+   \caption{Quadrilateral Elements Without and With Mid-Side Nodes.}
    \label{fig:nodes}
 \end{figure}
 
-Quadrilateral and brick elements can be forced into degenerate shapes with one or more triangular faces in order to mesh geometries that could not be meshed otherwise. For example, a quadrilateral element may collapse into a triangle (Figure 4.7, left), while a brick element may collapse into a prism, a pyramid, or a tetrahedron. This is achieved by defining the same node number for multiple nodes (Figure 4.7, right).
+Quadrilateral and brick elements can be forced into degenerate shapes with one or more triangular faces in order to mesh geometries that could not be meshed otherwise. For example, a quadrilateral element may collapse into a triangle (Figure 4.7, \ref{fig:nodes_elements}), while a brick element may collapse into a prism, a pyramid, or a tetrahedron. This is achieved by defining the same node number for multiple nodes (Figure \ref{fig:nodes_elements}, right).
 
 \begin{figure}[h]
    \centering
-   \includegraphics[width=0.6\textwidth]{nodesinelement.png}
-   \caption{Possible Element Shapes in ANSYS.}
-   \label{fig:nodes}
+   \includegraphics[width=0.9\textwidth]{shapesandnodes}
+   \caption{Quadrilateral Elements with Default and Degenerate Shapes: Node Letters for a Generic Element (left) and Node Numbers for a Specific Element in a FE Mesh (right)}
+   \label{fig:nodes_elements}
 \end{figure}
 
+\subsection{Degrees of freedom}
+
+The degrees of freedom (DOFs) are the primary unknowns in the equations that constitute a FEM. Solving the equations determines the values of the DOFs for each node in the model. These values are referred to as the ''primary data'' in the documentation. The derived data (stresses, strains, gradients, fluxes, etc.) are calculated from the DOF solution. ANSYS DOFs include displacements (UX, UY, UZ), rotations (ROTX, ROTY, ROTZ), temperature (TEMP), fluid pressure (PRES), fluid kinetic energy (ENKE), magnetic vector potential (AX, AY, AZ), voltage (VOLT), and current (CURR). As an example Figs. \ref{fig:structuralDOF} and \ref{fig:thermalDOF} show the DOF of some ANSYS elements for structural and thermal analysis, respectively.
+
+\begin{figure}[h]
+   \centering
+   \includegraphics[width=0.9\textwidth]{StructuralDOF}
+   \caption{Commonly Used Structural Continuum Elements}
+   \label{fig:structuralDOF}
+\end{figure}
+
+\begin{figure}[h]
+   \centering
+   \includegraphics[width=0.9\textwidth]{thermalDOF}
+   \caption{Commonly Used Thermal Continuum Elements}
+   \label{fig:thermalDOF}
+\end{figure}
+
+The degrees of freedom included in each element type reflect the physics of the underlying problem. You should choose elements that offer only the degrees of freedom that you require since additional degrees of freedom increase computation time and provide no benefit. For example, structural analysis does not (usually) involve heat transfer or voltages. Therefore, the element(s) used to model structures should not have TEMP or VOLT DOFs.
+
+
+\section{Practical Exercises}
+
+In this laboratory, you will perform a steady-state structural analysis of a cantilever beam using 1D, 2D, and 3D models meshed with beam, plane, and solid elements. The beam is made of aluminum with a Young’s modulus of $73.1$GPa and a Poisson’s ratio of $0.33$. It is $1.0$m in length with a $100\times100$mm cross section. It has a load of $5000$N applied to the unsupported end (Figure \ref{fig:problem}). 
+
+The 1D model will be meshed with BEAM189 elements. The 2D model will be meshed with PLANE182 elements. And, the 3D model will be meshed with SOLID186 elements. The goal of each analysis is to determine the deflection at the end of the beam and the stresses throughout the beam. Once all three models have been solved, the differences and similarities among the results of the three models will be examined.
+
+\begin{figure}[h]
+   \centering
+   \includegraphics[width=0.5\textwidth]{problem}
+   \caption{Schematic of Cantilever Beam with End Load.}
+   \label{fig:problem}
+\end{figure}
+
+\subsection{Material properties}
+\begin{itemize}
+\item Young's Modulus $7.310\times10^{10}$Pa
+\item Poisson's ratio $0.33$
+\end{itemize}
+\subsection{Boundary Conditions}
+\begin{itemize}
+\item $6000$ N downward load applied to the center of the free end of the beam
+\item The fixed end of the beam is fully constrained in x, y, and z.
+\end{itemize}
+
+\section{Report content}
+\begin{itemize}
+\item The report should be formatted as a IEEE template style.
+\item The report may content the following sections: Abstract, Introduction, Methods, Results, Discussion and Conclusions.
+\item Do not forget to perform the analysis in 1D, 2D and 3D. 
+\item Apply the element types mentioned.
+\item Implement a convergence analysis for each dimension, you can plot it as shown in Fig. \ref{fig:convergence}. For each dimension problem implement the following ranges in quantity of elements: $elem=[100,1000,5000,10000,50000]$
+\item Perform the analytical method (pure bending)
+\item Make a table with the main results on each and compare with the analytical answer, as shown in Fig. \ref{fig:tableresults}
+\item Do not forget to establish strong conclusions. 
+\end{itemize}
+
+\begin{figure}[h]
+   \centering
+   \includegraphics[width=0.7\textwidth]{Mesh-Convergence}
+   \caption{Example of a mesh convergence plot.}
+   \label{fig:convergence}
+\end{figure}
+
+\begin{figure}[h]
+   \centering
+   \includegraphics[width=0.7\textwidth]{tableresults}
+   \caption{Example of general results plot.}
+   \label{fig:tableresults}
+\end{figure}
+
+Enjoy this lab, regards!
 \end{document}
