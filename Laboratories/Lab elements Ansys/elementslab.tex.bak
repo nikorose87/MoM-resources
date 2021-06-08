@@ -207,5 +207,12 @@ The 1D model will be meshed with BEAM189 elements. The 2D model will be meshed w
    \label{fig:tableresults}
 \end{figure}
 
-Enjoy this lab, regards!
+This laboratory is inspired from the book of \cite{Thompson2017}. Enjoy this lab, regards!
+
+
+\bibliographystyle{apalike}
+
+\bibliography{Referencias.bib}
+
+
 \end{document}
