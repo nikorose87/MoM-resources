@@ -38,7 +38,7 @@ class angle_twist:
     
     def calc_angle_twist(self):
         if hasattr(self, r'complete_secs'):
-            self.complete_secs['J'] = self.complete_secs.apply(lambda x: ((x.OD/2)**2-(x.ID/2)**2)*np.pi/2, axis=1)
+            self.complete_secs['J'] = self.complete_secs.apply(lambda x: ((x.OD/2)**4-(x.ID/2)**4)*np.pi/2, axis=1)
             self.complete_secs['Angle'] = (self.complete_secs['T']*self.complete_secs['L'])/(self.complete_secs['G']*self.complete_secs['J'])
     def calc_complete_angle(self):
         if hasattr(self, r'complete_secs'):
@@ -64,7 +64,8 @@ for student in read_students.index:
     shaft_obj.calc_max_stress()
     shaft_obj.reindex()
     res_list.append(shaft_obj.complete_secs)
-    
+
+res_list_df = pd.concat(res_list)
 
 
 
