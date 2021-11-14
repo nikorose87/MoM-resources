@@ -19,7 +19,7 @@ def solve_beam(Ft, Lt, Fp, LFp, M, L_M, Fr, L_Fr, show=False): # $F_t$	Lt	Fp	LFp
     b.apply_load(Fp, LFp, -1) # Force
     b.apply_load(M, L_M, -2) # Moment
     b.apply_load(Fr, L_Fr, 0, 6) # Rectangular force
-    b.apply_load(Ft, 0, 1, Lt) # Triangle Force
+    b.apply_load(Ft/Lt, 0, 1, Lt) # Triangle Force
     b.solve_for_reaction_loads(R_0, R_4)
     if show:
         p = b.draw()
@@ -45,7 +45,7 @@ if not_lock:
 else:
     list_ben = pd.read_csv("List_ben.csv", index_col=0)
 
-process_bending = False
+process_bending = True
 if process_bending:
     info= {}
     for ind in list_ben.index:
